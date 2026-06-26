@@ -2,15 +2,30 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121212"
-    android:gravity="center">
+    android:background="#000000">
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <View
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/ic_launcher_foreground"
+        android:alpha="0.4" />
 
     <TextView
-        android:id="@+id/clockTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="00:00:00"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:text="Place QR Code inside the frame"
         android:textColor="#FFFFFF"
-        android:textSize="55sp"
+        android:textSize="16sp"
+        android:shadowColor="#000000"
+        android:shadowRadius="4"
         android:textStyle="bold" />
 </RelativeLayout>
