@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-feature android:name="android.hardware.camera" android:required="true" />
 
     <application
+        android:name=".ProQRScannerApp"
         android:allowBackup="true"
         android:label="Pro Scanner"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProScanner">
-        
+
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -23,11 +24,10 @@
             </intent-filter>
         </activity>
 
-        <activity 
-            android:name=".HistoryActivity"
+        <activity
+            android:name=".ui.history.HistoryActivity"
             android:exported="false"
-            android:label="Scan History"
             android:screenOrientation="portrait" />
-            
+
     </application>
 </manifest>

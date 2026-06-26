@@ -1,4 +1,4 @@
-package com.example.qrscanner.model
+package com.example.proqrscanner.domain.model
 
 data class ScanItem(
     val id: Long,

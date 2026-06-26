@@ -1,27 +1,32 @@
-package com.example.qrscanner.analyzer
+package com.example.proqrscanner.ui.scanner
 
-import android.annotation.SuppressLint
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
 
-class QrAnalyzer(private val onQrDetected: (String, Int) -> Unit) : ImageAnalysis.Analyzer {
+class QrAnalyzer(
+    private val onDetected: (String, Int) -> Unit
+) : ImageAnalysis.Analyzer {
 
     private val scanner = BarcodeScanning.getClient()
+    private var lastScannedValue = ""
+    private var lastScanTime = 0L
 
-    @SuppressLint("UnsafeOptInUsageError")
     override fun analyze(imageProxy: ImageProxy) {
         val mediaImage = imageProxy.image
         if (mediaImage != null) {
             val image = InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees)
             scanner.process(image)
                 .addOnSuccessListener { barcodes ->
-                    if (barcodes.isNotEmpty()) {
-                        val barcode = barcodes[0]
-                        val rawValue = barcode.rawValue ?: ""
-                        if (rawValue.isNotEmpty()) {
-                            onQrDetected(rawValue, barcode.valueType)
+                    for (barcode in barcodes) {
+                        val raw = barcode.rawValue ?: continue
+                        val now = System.currentTimeMillis()
+                        // ডুপ্লিকেট স্ক্যান এড়াতে থ্রটলিং
+                        if (raw != lastScannedValue || (now - lastScanTime) > 2000) {
+                            lastScannedValue = raw
+                            lastScanTime = now
+                            onDetected(raw, barcode.valueType)
                         }
                     }
                 }
