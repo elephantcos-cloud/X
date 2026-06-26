@@ -1,4 +1,4 @@
-name: Android APK Builder
+name: Pro APK Builder
 
 on:
   push:
@@ -7,7 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout Code
       uses: actions/checkout@v4
@@ -23,11 +22,11 @@ jobs:
       with:
         gradle-version: 8.5
 
-    - name: Build App APK
+    - name: Build Pro Production APK
       run: gradle assembleDebug
 
-    - name: Upload APK Artifact
+    - name: Upload Production Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: ClockApp-APK
+        name: Pro-QRScanner-APK
         path: app/build/outputs/apk/debug/app-debug.apk

@@ -17,7 +17,8 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -31,19 +32,23 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     
-    // CameraX (ক্যামেরা প্রিভিউ ও ফ্রেম অ্যানালাইসিসের জন্য)
+    // CameraX Core and Lifecycle
     implementation("androidx.camera:camera-core:1.3.2")
     implementation("androidx.camera:camera-camera2:1.3.2")
     implementation("androidx.camera:camera-lifecycle:1.3.2")
     implementation("androidx.camera:camera-view:1.3.2")
     
-    // Google ML Kit Barcode Scanning (হাই-কোয়ালিটি কিউআর কোড ডিটেকশনের জন্য)
+    // Google ML Kit Barcode Scanning
     implementation("com.google.mlkit:barcode-scanning:17.2.0")
 }

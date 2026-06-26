@@ -1,31 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/auto-res"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000">
+    android:background="@color/background_dark">
 
     <androidx.camera.view.PreviewView
-        android:id="@+id/previewView"
+        android:id="@+id/viewFinder"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <View
-        android:layout_width="260dp"
-        android:layout_height="260dp"
-        android:layout_centerInParent="true"
-        android:background="@drawable/ic_launcher_foreground"
-        android:alpha="0.4" />
+        android:id="@+id/searchFrame"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:background="@drawable/custom_scan_frame"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:text="Place QR Code inside the frame"
-        android:textColor="#FFFFFF"
+        android:text="Align QR / Barcode Inside Frame"
+        android:textColor="@color/text_main"
         android:textSize="16sp"
-        android:shadowColor="#000000"
-        android:shadowRadius="4"
-        android:textStyle="bold" />
-</RelativeLayout>
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@id/searchFrame"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnFlash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:contentDescription="Toggle Flashlight"
+        android:src="@android:drawable/ic_menu_compass"
+        app:backgroundTint="@color/surface_dark"
+        app:tint="@color/text_main"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:contentDescription="View History"
+        android:src="@android:drawable/ic_menu_recent_history"
+        app:backgroundTint="@color/surface_dark"
+        app:tint="@color/text_main"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

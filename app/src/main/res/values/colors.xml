@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#06B6D4</color>
+    <color name="primary_dark">#0891B2</color>
+    <color name="accent">#10B981</color>
+    <color name="background_dark">#111827</color>
+    <color name="surface_dark">#1F2937</color>
+    <color name="text_main">#FFFFFF</color>
+    <color name="text_muted">#9CA3AF</color>
+    <color name="laser_color">#EF4444</color>
+</resources>
